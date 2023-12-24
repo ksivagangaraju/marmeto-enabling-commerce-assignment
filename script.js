@@ -119,17 +119,36 @@ function getResults(categories) {
 };
 
 let url = 'https://cdn.shopify.com/s/files/1/0564/3685/0790/files/multiProduct.json';
-let options = {
-    method: 'GET'
-};
 
-fetch(url, options)
-    .then(function(response) {
-        return response.json();
-    })
-    .then(function(jsonData) {
-        let {
-            categories
-        } = jsonData;
-        getResults(categories);
-    });
+
+async function getapi(url)  {
+
+    const response = await fetch(url);
+
+  const data = await response.json();
+
+  let {categories} = data;
+  getResults(categories);
+  
+
+
+
+}
+getapi(url);
+
+// fetch(url, options)
+        
+//     .then(function(response) {
+       
+//          return response.json();
+       
+//     })
+    
+  
+//     .then(function(jsonData) {
+//         let {
+//             categories
+//         } = jsonData;
+//         getResults(categories);
+//     });
+    
